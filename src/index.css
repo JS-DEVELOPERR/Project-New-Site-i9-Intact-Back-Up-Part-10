@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 210 100% 33%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 30 100% 54%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold;
+  }
+
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .container-section {
+    @apply container mx-auto px-4 py-12 sm:py-16 md:py-24;
+  }
+
+  .btn-primary {
+    @apply bg-i9-blue hover:bg-i9-blueLight text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-md transition-all duration-300 dark:bg-i9-blue/90 dark:hover:bg-i9-blue text-sm sm:text-base;
+  }
+
+  .btn-secondary {
+    @apply bg-i9-orange hover:bg-orange-500 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-md transition-all duration-300 text-sm sm:text-base;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-12;
+  }
+  
+  /* Parallax effect classes */
+  .parallax-bg {
+    @apply relative bg-fixed bg-center bg-cover;
+  }
+  
+  .parallax-content {
+    @apply relative z-10;
+  }
+
+  /* Additional parallax classes */
+  .parallax-section {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* Mobile-specific styles */
+  @media (max-width: 640px) {
+    .mobile-menu {
+      @apply fixed inset-0 bg-background z-50 transform transition-transform duration-300;
+    }
+
+    .mobile-menu.hidden {
+      @apply translate-x-full;
+    }
+
+    .mobile-menu.visible {
+      @apply translate-x-0;
+    }
+
+    .mobile-nav-link {
+      @apply block w-full py-3 px-6 text-lg border-b border-gray-100 dark:border-gray-800;
+    }
+
+    .mobile-nav-button {
+      @apply w-full py-3 px-6 text-center;
+    }
+
+    .carousel-mobile {
+      @apply px-4;
+    }
+
+    .carousel-nav-mobile {
+      @apply opacity-75 scale-75;
+    }
+  }
+
+  /* Tablet-specific styles */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .tablet-grid {
+      @apply grid-cols-2;
+    }
+
+    .tablet-padding {
+      @apply px-6;
+    }
+
+    .tablet-theme-toggle {
+      @apply hidden;
+    }
+  }
+}
+
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* For Firefox */
+html {
+  scrollbar-color: var(--scrollbar-thumb, #aaa) var(--scrollbar-track, #f1f1f1);
+  scrollbar-width: thin;
+}
+
+.dark {
+  --scrollbar-thumb: #4a4a4a;
+  --scrollbar-track: #2d2d2d;
+}
+
+/* Add smooth scrolling for better user experience */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Improved responsiveness for mobile devices */
+@media (max-width: 640px) {
+  .container-section {
+    @apply py-10;
+  }
+  
+  h1 {
+    @apply text-3xl;
+  }
+  
+  h2 {
+    @apply text-2xl;
+  }
+  
+  h3 {
+    @apply text-xl;
+  }
+  
+  .section-subtitle {
+    @apply text-base mb-8;
+  }
+
+  .mobile-stack {
+    @apply flex-col;
+  }
+
+  .mobile-full-width {
+    @apply w-full;
+  }
+
+  .mobile-text-center {
+    @apply text-center;
+  }
+
+  .mobile-p-4 {
+    @apply p-4;
+  }
+
+  .mobile-my-2 {
+    @apply my-2;
+  }
+
+  .mobile-gap-4 {
+    @apply gap-4;
+  }
+}
+
+/* Make sure parallax works on mobile devices */
+@supports (-webkit-touch-callout: none) {
+  .parallax-bg, .parallax-section {
+    background-attachment: scroll;
+  }
+}
+
+/* Fix carousel navigation on mobile */
+@media (max-width: 640px) {
+  .embla__button {
+    @apply w-8 h-8;
+    transform: translateY(-50%);
+  }
+
+  .carousel-container {
+    @apply px-4;
+  }
+
+  .carousel-nav {
+    @apply px-2;
+  }
+}
+
+/* Responsive grid layouts */
+.responsive-grid {
+  @apply grid gap-4 sm:gap-6 md:gap-8;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Responsive images */
+.responsive-image {
+  @apply w-full h-auto object-cover;
+}
+
+/* Responsive typography */
+.responsive-text {
+  @apply text-sm sm:text-base md:text-lg;
+}
+
+/* Responsive spacing */
+.responsive-spacing {
+  @apply p-4 sm:p-6 md:p-8;
+}
+
+/* Responsive buttons */
+.responsive-button {
+  @apply w-full sm:w-auto;
+}
+
+/* Responsive navigation */
+.responsive-nav {
+  @apply flex-col sm:flex-row;
+}
+
+/* Responsive cards */
+.responsive-card {
+  @apply flex flex-col sm:flex-row;
+}
+
+/* Responsive forms */
+.responsive-form {
+  @apply w-full max-w-lg mx-auto;
+}
+
+/* Responsive tables */
+.responsive-table {
+  @apply overflow-x-auto;
+}
+
+/* Touch-friendly elements */
+.touch-friendly {
+  @apply min-h-[44px] min-w-[44px];
+}
+
+/* Fix for mobile menu background */
+.mobile-menu-overlay {
+  @apply fixed inset-0 bg-background/95 backdrop-blur-sm z-40;
+}
+
+/* Fix for theme toggle on tablets */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .theme-toggle-wrapper {
+    @apply hidden md:flex;
+  }
+}
